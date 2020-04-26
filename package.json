@@ -6,7 +6,8 @@
     "stage": "react-static build --staging",
     "build": "react-static build",
     "analyze": "react-static build --analyze",
-    "serve": "serve dist -p 3000"
+    "serve": "serve dist -p 3000",
+    "md-to-html": "markdown ./server/resources/readme.md --flavor gfm > ./server/resources/readme.html"
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
@@ -28,6 +29,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "jsdom": "^16.2.2",
+    "markdown-to-html": "^0.0.13",
     "serve": "^11.1.0"
   }
 }
