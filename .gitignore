@@ -20,3 +20,5 @@ yarn-error.log*
 
 /server/resources/readme.html
 
+/server/resources/readme.json
+
