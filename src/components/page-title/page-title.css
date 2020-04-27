@@ -1,0 +1,10 @@
+.page-title-container {
+  display: grid;
+  grid-template-columns: max-content max-content max-content;
+  grid-gap: 20px;
+  align-items: baseline;
+}
+
+.page-title-container h1 {
+  text-transform: capitalize;
+}

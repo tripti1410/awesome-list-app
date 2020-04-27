@@ -9,16 +9,16 @@ import Logo from "./components/logo/logo";
 function App() {
   return (
     <Root>
-      <header>
+      <header className="header">
         <Logo />
       </header>
-      <div className="content">
+      <main className="content">
         <React.Suspense fallback={<em>Loading...</em>}>
           <Router>
             <Routes path="*" />
           </Router>
         </React.Suspense>
-      </div>
+      </main>
     </Root>
   );
 }

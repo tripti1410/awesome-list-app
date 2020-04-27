@@ -1,6 +1,10 @@
 .app-logo {
-  width: 300px;
-  height: 250px;
+  width: 250px;
+  height: 175px;
+}
+
+.app-logo a {
+  display: block;
 }
 .specs {
   fill: var(--primary-color);
