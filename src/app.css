@@ -32,9 +32,10 @@ img {
   margin: auto;
 }
 
-.header {
+.wrapper {
   max-width: 900px;
   margin: auto;
+  padding: 0 16px;
 }
 
 .scroll-to-top {
@@ -61,4 +62,21 @@ img {
   transform: -50% -50%;
   transform: translate(3%, -2%);
   transform-origin: center center;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  width: 1px;
+  height: 1px;
+  top: auto;
+}
+
+.skip-link:focus {
+  color: gray;
+  display: inline-block;
+  height: auto;
+  width: auto;
+  position: static;
+  margin: auto;
 }

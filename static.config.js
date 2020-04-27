@@ -51,6 +51,10 @@ export default {
         location: path.resolve("./src/pages"),
       },
     ],
+    [
+      "react-static-plugin-favicons",
+      { inputFile: path.resolve("./images", "favicon.svg") },
+    ],
     require.resolve("react-static-plugin-reach-router"),
     require.resolve("react-static-plugin-sitemap"),
   ],

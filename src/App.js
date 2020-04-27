@@ -1,5 +1,5 @@
 import React from "react";
-import { Root, Routes } from "react-static";
+import { Root, Routes, Head } from "react-static";
 //
 import { Router } from "components/Router";
 
@@ -17,18 +17,28 @@ function scrollTop() {
 function App() {
   return (
     <Root>
-      <header className="header">
-        <Logo />
-      </header>
-      <main className="content">
-        <React.Suspense fallback={<em>Loading...</em>}>
-          <Router>
-            <Routes path="*" />
-          </Router>
-        </React.Suspense>
-      </main>
-      <div className="scroll-to-top">
-        <a onClick={() => scrollTop()}>^</a>
+      <Head>
+        <meta charSet="UTF-8" />
+        <title>Awesome List App</title>
+      </Head>
+      <div className="wrapper">
+        <a id="skip-header" className="skip-link" href="#main-content">
+          Skip to main content
+        </a>
+
+        <header className="header">
+          <Logo />
+        </header>
+        <main id="main-content" className="content">
+          <React.Suspense fallback={<em>Loading...</em>}>
+            <Router>
+              <Routes path="*" />
+            </Router>
+          </React.Suspense>
+        </main>
+        <div className="scroll-to-top">
+          <a onClick={() => scrollTop()}>^</a>
+        </div>
       </div>
     </Root>
   );

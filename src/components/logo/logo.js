@@ -5,7 +5,7 @@ import "./logo.css";
 const Logo = () => {
   return (
     <div className="app-logo">
-      <Link to="/">
+      <Link to="/" aria-label="Awesome list logo">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="-178.3 -167.1 1000 700"
