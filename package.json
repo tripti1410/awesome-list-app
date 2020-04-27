@@ -5,11 +5,11 @@
     "start": "react-static start",
     "stage": "react-static build --staging",
     "analyze": "react-static build --analyze",
-    "serve": "serve dist -p 3000",
     "md-to-html": "markdown ./server/resources/readme.md --flavor gfm > ./server/resources/readme.html",
     "html-to-json": "node ./server/transform-data.js",
     "transform-data": "yarn md-to-html && yarn html-to-json",
-    "build": "yarn transform-data && react-static build"
+    "build": "yarn transform-data && react-static build",
+    "serve": "yarn build && serve dist -p 3000"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.12",
@@ -31,7 +31,6 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
-    "http-server": "^0.12.2",
     "jsdom": "^16.2.2",
     "markdown-to-html": "^0.0.13",
     "serve": "^11.1.0"
