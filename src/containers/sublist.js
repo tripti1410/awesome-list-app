@@ -10,7 +10,6 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 
-//import Breadcrumbs from "./breadcrumbs";
 import PageTitle from "../components/page-title/page-title";
 import { Link } from "@reach/router";
 
@@ -36,7 +35,7 @@ export default function SubList() {
       <PageTitle
         title={item.title}
         description={item.description}
-        link={item.link}
+        link={item.githubLink}
       />
       {item.children.length > 0 && (
         <TableContainer component={Paper}>
