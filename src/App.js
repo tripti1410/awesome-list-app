@@ -1,20 +1,16 @@
 import React from "react";
-import { Root, Routes, addPrefetchExcludes } from "react-static";
+import { Root, Routes } from "react-static";
 //
-import { Link, Router } from "components/Router";
+import { Router } from "components/Router";
 
 import "./app.css";
-
-// Any routes that start with 'dynamic' will be treated as non-static routes
-addPrefetchExcludes(["dynamic"]);
+import Logo from "./components/logo/logo";
 
 function App() {
   return (
     <Root>
       <header>
-        <div className="logo">
-          <Link to="/">Home</Link>
-        </div>
+        <Logo />
       </header>
       <div className="content">
         <React.Suspense fallback={<em>Loading...</em>}>
