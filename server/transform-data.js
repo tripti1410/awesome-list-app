@@ -6,6 +6,19 @@ const html = fs.readFileSync("./server/resources/readme.html", "utf8");
 
 const { document } = new JSDOM(html).window;
 
+// sourceLink: https://gist.github.com/codeguy/6684588#gistcomment-3243980
+function slugify(text) {
+  const str = text
+    .toString() // Cast to string
+    .toLowerCase() // Convert the string to lowercase letters
+    .normalize("NFD") // The normalize() method returns the Unicode Normalization Form of a given string.
+    .trim() // Remove whitespace from both sides of a string
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/[^\w\-]+/g, "") // Remove all non-word chars
+    .replace(/\-\-+/g, "-"); // Replace multiple - with single -
+  return encodeURIComponent(str);
+}
+
 function removeHash(string) {
   return string.replace("#", "");
 }
@@ -22,7 +35,7 @@ function getTitleLinkAndGithubLink(nodeList) {
   return anchorNode
     ? {
         title: anchorNode.text,
-        link: anchorNode.text.toLowerCase(),
+        link: slugify(anchorNode.text),
         githubLink: anchorNode.href,
       }
     : { title: "", link: "", githubLink: "" };
