@@ -6,49 +6,77 @@ const html = fs.readFileSync("./server/resources/readme.html", "utf8");
 
 const { document } = new JSDOM(html).window;
 
-function convertToObject(node) {
-  obj = {};
-  for (var p in node) {
-    obj[p] = node[p];
-  }
-  return obj;
+function removeHash(string) {
+  return string.replace("#", "");
+}
+
+function getDescription(nodeList) {
+  const textNode = nodeList.find(
+    (item) => item.nodeName === "#text" && item.wholeText.trim() !== ""
+  );
+  return textNode ? textNode.wholeText.trim() : "";
+}
+
+function getTitleLinkAndGithubLink(nodeList) {
+  const anchorNode = nodeList.find((item) => item.nodeName === "A");
+  return anchorNode
+    ? {
+        title: anchorNode.text,
+        link: anchorNode.text.toLowerCase(),
+        githubLink: anchorNode.href,
+      }
+    : { title: "", link: "", githubLink: "" };
+}
+function getTitleAndGithubLink(nodeList) {
+  const endNode = nodeList[0];
+  return {
+    title: endNode.text,
+    githubLink: endNode.href,
+  };
+}
+
+function getItemDescription(nodeList) {
+  const textNode = [...nodeList].find(
+    (item) => item.nodeName === "#text" && item.wholeText.trim() !== ""
+  );
+
+  return textNode ? textNode.wholeText.trim() : "";
+}
+
+function getSubChildren(nodeList) {
+  return [...nodeList]
+    .map((subItem) => {
+      if (subItem.nodeName === "LI") {
+        const anchorAndTextNodeList = subItem.childNodes;
+        const anchodeNodeList = [...anchorAndTextNodeList].filter(
+          (item) => item.nodeName === "A"
+        );
+        return {
+          ...getTitleAndGithubLink(anchodeNodeList),
+          description: getItemDescription(anchorAndTextNodeList),
+        };
+      }
+    })
+    .filter((item) => item);
+}
+
+function getItem(nodeList) {
+  const ulNode = nodeList.find((item) => item.nodeName === "UL");
+  return ulNode ? getSubChildren(ulNode.childNodes) : [];
 }
 
 function getList(topic) {
   const query = `${topic.hash} + ul > li`;
-
-  const secondLevelContent = [...document.querySelectorAll(query)].map(
-    (secondLevelItem) => {
-      const nodeObject = convertToObject(secondLevelItem);
-      if (nodeObject.children.length === 2) {
-        //HasChild
-        const parent = nodeObject.children[0];
-        const ul = nodeObject.children[1];
-        return {
-          title: parent.text,
-          link: parent.hash,
-          children: [...ul.children].map((item) => {
-            const anchor = convertToObject(item.children)[0];
-            //console.log(anchor, "anchor=================");
-            return {
-              title: anchor.text,
-            };
-          }),
-        };
-      } else {
-        const child = nodeObject.children[0];
-        return {
-          title: child.text,
-          link: child.hash,
-          children: [],
-        };
-      }
-    }
-  );
-
-  return secondLevelContent;
-
-  //console.log(secondLevelContent, "secondLevelContent____________");
+  const listOfTopic = [...document.querySelectorAll(query)];
+  const list = [...listOfTopic].map((list) => {
+    const childrenOfList = [...list.childNodes];
+    return {
+      ...getTitleLinkAndGithubLink(childrenOfList),
+      description: getDescription(childrenOfList),
+      children: getItem(childrenOfList),
+    };
+  });
+  return list;
 }
 
 function getTopics() {
@@ -56,7 +84,7 @@ function getTopics() {
     (topic) => {
       return {
         title: topic.text,
-        link: topic.hash,
+        link: removeHash(topic.hash),
         children: getList(topic),
       };
     }
