@@ -17,6 +17,8 @@ yarn-debug.log*
 yarn-error.log*
 
 /tmp
+/dist
+/artifacts
 
 /server/resources/readme.html
 
