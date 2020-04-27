@@ -11,9 +11,11 @@ addPrefetchExcludes(["dynamic"]);
 function App() {
   return (
     <Root>
-      <nav>
-        <Link to="/">Home</Link>
-      </nav>
+      <header>
+        <div className="logo">
+          <Link to="/">Home</Link>
+        </div>
+      </header>
       <div className="content">
         <React.Suspense fallback={<em>Loading...</em>}>
           <Router>

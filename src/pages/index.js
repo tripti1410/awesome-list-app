@@ -2,16 +2,17 @@ import React from "react";
 import { useRouteData } from "react-static";
 //
 import { Link } from "components/Router";
+
 export default () => {
-  const { homePageData } = useRouteData();
+  const { jsonData } = useRouteData();
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1>{homePageData.title}</h1>
+    <div>
+      <h1>{jsonData.title}</h1>
       <ul>
-        {homePageData.children.map((post) => (
+        {jsonData.children.map((post) => (
           <li key={post.title}>
-            <Link to={`${post.link}/`}>{post.title}</Link>
+            <Link to={`${post.link}`}>{post.title}</Link>
           </li>
         ))}
       </ul>

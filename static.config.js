@@ -1,16 +1,21 @@
 import path from "path";
-//import axios from "axios";
-import data from "./src/data/data";
 
-const homePageData = data.content;
+const fs = require("fs");
+let jsonData = JSON.parse(
+  fs.readFileSync("./server/resources/readme.json", "utf-8")
+);
 
-function getOtherPages(homePageData) {
-  const a = homePageData.children.map((list) => {
+function getOtherPages() {
+  const a = jsonData.children.map((list) => {
     const b = list.children.map((item) => ({
-      path: `${list.link}${item.link}`,
+      path: `${list.link}/${item.link}`,
       template: "src/containers/sublist",
       getData: () => ({
         item,
+        breadcrumbs: [
+          { title: list.title, link: list.link },
+          { title: item.title, link: `${list.link}/${item.link}` },
+        ],
       }),
     }));
     return b;
@@ -25,17 +30,18 @@ export default {
       {
         path: "/",
         getData: () => ({
-          homePageData,
+          jsonData,
         }),
-        children: homePageData.children.map((list) => ({
+        children: jsonData.children.map((list) => ({
           path: `${list.link}`,
           template: "src/containers/listing",
           getData: () => ({
             list,
+            breadcrumbs: [{ title: list.title, link: list.link }],
           }),
         })),
       },
-      ...getOtherPages(homePageData),
+      ...getOtherPages(),
     ];
   },
   plugins: [
