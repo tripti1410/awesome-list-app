@@ -8,7 +8,7 @@
     "md-to-html": "markdown ./server/resources/readme.md --flavor gfm > ./server/resources/readme.html",
     "html-to-json": "node ./server/transform-data.js",
     "transform-data": "yarn md-to-html && yarn html-to-json",
-    "build": "yarn transform-data && rm -rf ./dist && react-static build",
+    "build": "yarn transform-data && react-static build",
     "serve": "yarn build && serve dist -p 3000"
   },
   "dependencies": {
