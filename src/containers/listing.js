@@ -2,7 +2,7 @@ import React from "react";
 import { useRouteData } from "react-static";
 //
 import { Link } from "components/Router";
-//import Breadcrumbs from "./breadcrumbs";
+
 import PageTitle from "../components/page-title/page-title";
 
 import Table from "@material-ui/core/Table";
@@ -17,7 +17,7 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 export default function Listing() {
   const { list, breadcrumbs } = useRouteData();
   return (
-    <div>
+    <React.Fragment>
       <Breadcrumbs aria-label="breadcrumb">
         <Link color="inherit" to="/">
           Home
@@ -41,7 +41,7 @@ export default function Listing() {
               <TableRow>
                 <TableCell>List</TableCell>
                 <TableCell align="left">Description</TableCell>
-                <TableCell align="left">link</TableCell>
+                <TableCell align="left">Link</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -58,6 +58,6 @@ export default function Listing() {
           </Table>
         </TableContainer>
       )}
-    </div>
+    </React.Fragment>
   );
 }

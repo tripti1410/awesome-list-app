@@ -12,11 +12,13 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 
 import PageTitle from "../components/page-title/page-title";
 import { Link } from "@reach/router";
+import StarCounter from "../components/star-counter/star-counter";
 
 export default function SubList() {
   const { item, breadcrumbs } = useRouteData();
+
   return (
-    <div>
+    <React.Fragment>
       <Breadcrumbs aria-label="breadcrumb">
         <Link color="inherit" to="/">
           Home
@@ -37,6 +39,7 @@ export default function SubList() {
         description={item.description}
         link={item.githubLink}
       />
+      <StarCounter />
       {item.children.length > 0 && (
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
@@ -63,6 +66,6 @@ export default function SubList() {
           </Table>
         </TableContainer>
       )}
-    </div>
+    </React.Fragment>
   );
 }

@@ -5,6 +5,8 @@ import { Router } from "components/Router";
 
 import "./app.css";
 import Logo from "./components/logo/logo";
+import { StarProvider } from "./client/star/star-context";
+import StarDisplay from "./components/star-display/star-display";
 
 function scrollTop() {
   return window.scroll({
@@ -30,11 +32,14 @@ function App() {
           <Logo />
         </header>
         <main id="main-content" className="content">
-          <React.Suspense fallback={<em>Loading...</em>}>
-            <Router>
-              <Routes path="*" />
-            </Router>
-          </React.Suspense>
+          <StarProvider>
+            <StarDisplay />
+            <React.Suspense fallback={<em>Loading...</em>}>
+              <Router>
+                <Routes path="*" />
+              </Router>
+            </React.Suspense>
+          </StarProvider>
         </main>
         <div className="scroll-to-top">
           <a onClick={() => scrollTop()}>^</a>
