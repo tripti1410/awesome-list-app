@@ -15,7 +15,7 @@ import { Link } from "@reach/router";
 import StarCounter from "../components/star-counter/star-counter";
 
 export default function SubList() {
-  const { item, breadcrumbs } = useRouteData();
+  const { item, breadcrumbs, id } = useRouteData();
 
   return (
     <React.Fragment>
@@ -39,7 +39,7 @@ export default function SubList() {
         description={item.description}
         link={item.githubLink}
       />
-      <StarCounter />
+      <StarCounter id={id} />
       {item.children.length > 0 && (
         <TableContainer component={Paper}>
           <Table aria-label="simple table">

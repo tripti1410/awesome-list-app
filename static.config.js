@@ -16,6 +16,7 @@ function getOtherPages() {
           { title: list.title, link: list.link },
           { title: item.title, link: `${list.link}/${item.link}` },
         ],
+        id: `${list.link}/${item.link}`,
       }),
     }));
     return b;

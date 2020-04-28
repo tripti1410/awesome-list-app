@@ -1,11 +1,10 @@
 import React from "react";
 import { useStar } from "../../client/star/star-context";
 
-function StarCounter() {
+function StarCounter(id) {
   const [star, setStar] = useStar();
-  const path = window.location.pathname;
-  const toggle = () => setStar((star) => ({ ...star, [path]: !star[path] }));
-  return <button onClick={toggle}>{star[path] ? "Unstar" : "Star"}</button>;
+  const toggle = () => setStar((star) => ({ ...star, [id]: !star[id] }));
+  return <button onClick={toggle}>{star[id] ? "Unstar" : "Star"}</button>;
 }
 
 export default StarCounter;

@@ -45,7 +45,7 @@ function StarProvider(props) {
   const value = React.useMemo(() => [star, a.setStarStorage], [star]);
 
   useEffect(() => {
-    getLocalStorage().then((star) => setStarLocally(star));
+    getLocalStorage().then((star) => setStarLocally(star ? star : {}));
   });
 
   return <StarContext.Provider value={value} {...props} />;
