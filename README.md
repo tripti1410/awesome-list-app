@@ -1,4 +1,5 @@
 # Awesome list app 
+  This site can be viewd [here](https://awesome-list-app.now.sh/)
   ## About
   1. This site is build using [React static](https://github.com/react-static/react-static) as base template. 
   2. Markdown data taken from [Awesome](https://github.com/sindresorhus/awesome). 
@@ -48,11 +49,11 @@
 ```
 
 ## Installations
-  - yarn install
+  - `yarn install`
   - Dev server 
-    - yarn start
+    - `yarn start`
   - Production server locally 
-    - yarn serve
+    - `yarn serve`
     - On osx after running above command If you see Error(Input file has corrupt header: glib: SVG has no elements ), do `brew install vips` .
  
 ## Assumptions
@@ -72,5 +73,4 @@
   #### [Material UI](https://material-ui.com/)
   #### [Markdown to html](https://www.npmjs.com/package/markdown-to-html)
   
-## Lighthouse score
   
