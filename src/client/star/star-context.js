@@ -41,8 +41,8 @@ function wrapper(setStarLocally, star) {
 
 function StarProvider(props) {
   const [star, setStarLocally] = React.useState({});
-  let a = wrapper(setStarLocally, star);
-  const value = React.useMemo(() => [star, a.setStarStorage], [star]);
+  const storage = wrapper(setStarLocally, star);
+  const value = React.useMemo(() => [star, storage.setStarStorage], [star]);
 
   useEffect(() => {
     getLocalStorage().then((star) => {

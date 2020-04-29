@@ -6,23 +6,24 @@ let jsonData = JSON.parse(
 );
 
 function getOtherPages() {
-  const a = jsonData.children.map((list) => {
-    const b = list.children.map((item) => ({
-      path: `${list.link}/${item.link}`,
-      template: "src/containers/sublist",
-      getData: () => ({
-        item,
-        breadcrumbs: [
-          { title: list.title, link: list.link },
-          { title: item.title, link: `${list.link}/${item.link}` },
-        ],
-        id: `${list.link}/${item.link}`,
-      }),
-    }));
-    return b;
-  });
-  const result = a.flat();
-  return result;
+  const pages = jsonData.children
+    .map((list) => {
+      const itemPages = list.children.map((item) => ({
+        path: `${list.link}/${item.link}`,
+        template: "src/containers/sublist",
+        getData: () => ({
+          item,
+          breadcrumbs: [
+            { title: list.title, link: list.link },
+            { title: item.title, link: `${list.link}/${item.link}` },
+          ],
+          id: `${list.link}/${item.link}`,
+        }),
+      }));
+      return itemPages;
+    })
+    .flat();
+  return pages;
 }
 
 export default {
