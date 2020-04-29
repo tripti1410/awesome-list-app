@@ -63,6 +63,8 @@
 
 ## Improvements
 - Writing tests
+- Type checking
+- API Error Handling
 
 ## Libraries used
   #### [React static](https://github.com/react-static/react-static)
