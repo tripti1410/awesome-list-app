@@ -9,7 +9,6 @@ import TableWrapper from "../components/table-wrapper/table-wrapper";
 
 export default function SubList() {
   const { item, breadcrumbs, id } = useRouteData();
-  console.log(id, "id");
   return (
     <React.Fragment>
       <Breadcrumbs aria-label="breadcrumb">
