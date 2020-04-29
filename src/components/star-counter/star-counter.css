@@ -1,0 +1,21 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  border-width: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.btn--primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+  width: 100px;
+  height: 34px;
+  font-size: var(--fs-xl);
+}
+
+.btn--primary:hover {
+  background-color: var(--primary-color-darker);
+}
