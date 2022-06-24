@@ -32,7 +32,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
-    "jsdom": "^16.2.2",
+    "jsdom": "^16.5.0",
     "markdown-to-html": "^0.0.13",
     "serve": "^11.1.0"
   }
